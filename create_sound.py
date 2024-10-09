@@ -1,4 +1,4 @@
-import boto
+import boto3
 from transformers import AutoTokenizer, AutoModelForTextToWaveform
 import os
 
@@ -22,7 +22,7 @@ tokenizer.save_pretrained(save_dir)
 model.save_pretrained(save_dir)
 
 # S3クライアントを作成
-s3 = boto.client('s3')
+s3 = boto3.client('s3')
 
 # ローカルファイルをS3にアップロードする関数
 def upload_directory_to_s3(local_directory, bucket_name, s3_directory):
